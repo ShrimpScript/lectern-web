@@ -193,3 +193,110 @@ export const studies: Study[] = [
   }
 },
 ];
+
+export type HardArm = { id: string; label: string; note: string; comparable: boolean; passed: number; runs: number; meanTokens: number | null; meanWallS: number };
+export type HardStudy = { slug: string; title: string; date: string; arms: HardArm[]; headToHead: { id: string; raw: number; lectern: number }[]; findings: string[]; caveats: string[]; links: { results: string; traces: string } };
+
+export const hardStudy: HardStudy = {
+  "slug": "hard-tasks-lectern-vs-raw-agent",
+  "title": "Harder tasks \u2014 Lectern vs the raw agent",
+  "date": "2026-07-06",
+  "arms": [
+    {
+      "id": "free-single",
+      "label": "free single \u00d72",
+      "note": "deepseek free tier",
+      "comparable": true,
+      "passed": 11,
+      "runs": 12,
+      "meanTokens": 15252,
+      "meanWallS": 40.8
+    },
+    {
+      "id": "free-conductor",
+      "label": "free conductor \u00d72",
+      "note": "deepseek free tier",
+      "comparable": true,
+      "passed": 11,
+      "runs": 12,
+      "meanTokens": 32655,
+      "meanWallS": 76.7
+    },
+    {
+      "id": "raw-claude",
+      "label": "raw Claude Code",
+      "note": "claude -p, no Lectern",
+      "comparable": true,
+      "passed": 6,
+      "runs": 6,
+      "meanTokens": 11557,
+      "meanWallS": 34.4
+    },
+    {
+      "id": "lectern-claude",
+      "label": "Lectern + Claude Code",
+      "note": "lectern run",
+      "comparable": true,
+      "passed": 6,
+      "runs": 6,
+      "meanTokens": 11671,
+      "meanWallS": 35.1
+    },
+    {
+      "id": "conductor-auto",
+      "label": "Conductor, routed",
+      "note": "Haiku/Sonnet per step",
+      "comparable": false,
+      "passed": 6,
+      "runs": 6,
+      "meanTokens": 4425,
+      "meanWallS": 113.4
+    }
+  ],
+  "headToHead": [
+    {
+      "id": "hard-api-shim",
+      "raw": 10846,
+      "lectern": 10785
+    },
+    {
+      "id": "hard-csv-report",
+      "raw": 10231,
+      "lectern": 10385
+    },
+    {
+      "id": "hard-fix-tests",
+      "raw": 10236,
+      "lectern": 10317
+    },
+    {
+      "id": "hard-migration",
+      "raw": 11367,
+      "lectern": 11287
+    },
+    {
+      "id": "hard-pipeline",
+      "raw": 13530,
+      "lectern": 13721
+    },
+    {
+      "id": "hard-wordwrap",
+      "raw": 13131,
+      "lectern": 13529
+    }
+  ],
+  "findings": [
+    "Same tasks, same Claude Code subscription, with and without Lectern: 6/6 both, +1.0% tokens, same wall time. The engine layer \u2014 indexing, brain recall, session capture, the Apply pipeline \u2014 is effectively free on top of the agent it drives.",
+    "The Conductor's per-step routing demonstrably fires: quick steps went to Haiku, the main step to Sonnet \u2014 two models inside one task, all six tasks passing fully routed.",
+    "At this difficulty orchestration still shows cost, not success gain: strong single calls pass everything, so plan-and-review can only add overhead. Its success case needs task classes where single calls genuinely fail."
+  ],
+  "caveats": [
+    "Cross-backend token totals are not comparable: Claude Code reports usage excluding prompt-cache reads; opencode reports fuller totals. The Conductor-routed arm's low token figure is a cache-accounting artifact \u2014 read its cost from wall time.",
+    "Subscription arms ran once each (bounded deliberately); free arms twice. Directional, not definitive.",
+    "One free-single run timed out at 240s (free-tier flakiness) and counts as a failure."
+  ],
+  "links": {
+    "results": "https://github.com/ShrimpScript/lectern/blob/main/bench/studies/2026-07-06-hard-tasks/RESULTS.md",
+    "traces": "https://github.com/ShrimpScript/lectern/tree/main/bench/studies/2026-07-06-hard-tasks"
+  }
+};

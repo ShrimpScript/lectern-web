@@ -185,3 +185,90 @@ export function TaskTable({ study }: { study: Study }) {
     </div>
   );
 }
+
+/* ── head-to-head: raw agent vs Lectern on the same model ──────────────── */
+import type { HardStudy } from "@/lib/data/studies";
+
+export function HeadToHeadChart({ study }: { study: HardStudy }) {
+  const [hover, setHover] = useState<string | null>(null);
+  const max = Math.max(...study.headToHead.flatMap((t) => [t.raw, t.lectern]));
+  const bar = (v: number, color: string, label: string) => (
+    <div style={{ display: "flex", alignItems: "center", gap: 10, height: 15 }}>
+      <div aria-label={label} style={{ width: `${Math.max(1.5, (v / max) * 100)}%`, height: 15, background: color, borderRadius: "0 4px 4px 0", transition: "width 400ms ease" }} />
+      <span className="mono" style={{ fontSize: 11, color: "var(--fg-dim)", whiteSpace: "nowrap" }}>{fmt(v)}</span>
+    </div>
+  );
+  return (
+    <div role="figure" aria-label="Tokens per task: raw Claude Code vs Lectern driving the same model">
+      <div style={{ display: "flex", gap: 18, marginBottom: 20 }}>
+        <span style={{ display: "inline-flex", alignItems: "center", gap: 7 }}>
+          <span style={{ width: 14, height: 8, borderRadius: 3, background: MID }} />
+          <span style={{ fontSize: 12.5, color: "var(--fg2)" }}>raw Claude Code — no Lectern</span>
+        </span>
+        <span style={{ display: "inline-flex", alignItems: "center", gap: 7 }}>
+          <span style={{ width: 14, height: 8, borderRadius: 3, background: INK }} />
+          <span style={{ fontSize: 12.5, color: "var(--fg2)" }}>Lectern + Claude Code</span>
+        </span>
+      </div>
+      <div style={{ display: "flex", flexDirection: "column", gap: 14 }}>
+        {study.headToHead.map((t) => (
+          <div key={t.id} onMouseEnter={() => setHover(t.id)} onMouseLeave={() => setHover(null)}
+            style={{ display: "grid", gridTemplateColumns: "150px 1fr", gap: 14, alignItems: "center" }}>
+            <div style={{ textAlign: "right" }}>
+              <div className="mono" style={{ fontSize: 12, color: hover === t.id ? "var(--fg)" : "var(--fg2)" }}>{t.id.replace("hard-", "")}</div>
+              <div className="mono" style={{ fontSize: 10, color: "var(--fg-ghost)" }}>{hover === t.id ? pct(t.raw, t.lectern) + " with Lectern" : ""}</div>
+            </div>
+            <div style={{ display: "flex", flexDirection: "column", gap: 2 }}>
+              {bar(t.raw, MID, `${t.id} raw: ${fmt(t.raw)} tokens`)}
+              {bar(t.lectern, INK, `${t.id} lectern: ${fmt(t.lectern)} tokens`)}
+            </div>
+          </div>
+        ))}
+      </div>
+      <div style={{ display: "grid", gridTemplateColumns: "150px 1fr", gap: 14, marginTop: 10 }}>
+        <span />
+        <div style={{ borderTop: "1px solid var(--bd2)", paddingTop: 5, display: "flex", justifyContent: "space-between" }}>
+          <span className="mono" style={{ fontSize: 10, color: "var(--fg-ghost)" }}>0</span>
+          <span className="mono" style={{ fontSize: 10, color: "var(--fg-ghost)" }}>total tokens per run · same Claude Code subscription</span>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export function ArmsTable({ study }: { study: HardStudy }) {
+  const th: React.CSSProperties = { textAlign: "right", padding: "8px 12px", fontSize: 11, color: "var(--fg-dim)", fontWeight: 500, letterSpacing: "0.05em", textTransform: "uppercase" };
+  const td: React.CSSProperties = { textAlign: "right", padding: "7px 12px", fontSize: 12.5 };
+  return (
+    <div style={{ overflowX: "auto", border: "1px solid var(--bd2)", borderRadius: "var(--radius)" }}>
+      <table className="mono" style={{ width: "100%", borderCollapse: "collapse", background: "var(--panel)" }}>
+        <thead>
+          <tr style={{ borderBottom: "1px solid var(--bd2)" }}>
+            <th style={{ ...th, textAlign: "left" }}>arm</th>
+            <th style={th}>passed</th>
+            <th style={th}>mean tokens</th>
+            <th style={th}>mean wall</th>
+          </tr>
+        </thead>
+        <tbody>
+          {study.arms.map((a) => (
+            <tr key={a.id} style={{ borderBottom: "1px solid var(--bd2)" }}>
+              <td style={{ ...td, textAlign: "left" }}>
+                <span style={{ color: "var(--fg)" }}>{a.label}</span>
+                <span style={{ color: "var(--fg-ghost)", fontSize: 11 }}> · {a.note}</span>
+              </td>
+              <td style={{ ...td, color: "var(--fg)" }}>{a.passed}/{a.runs}</td>
+              <td style={{ ...td, color: a.comparable ? "var(--fg2)" : "var(--fg-ghost)" }}>
+                {a.meanTokens == null ? "—" : fmt(a.meanTokens)}{!a.comparable && " †"}
+              </td>
+              <td style={{ ...td, color: "var(--fg2)" }}>{a.meanWallS}s</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+      <p className="mono" style={{ margin: 0, padding: "8px 12px", fontSize: 10.5, color: "var(--fg-ghost)", borderTop: "1px solid var(--bd2)" }}>
+        † cache-accounting artifact — not comparable across backends; read cost from wall time.
+      </p>
+    </div>
+  );
+}

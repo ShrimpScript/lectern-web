@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { Reveal } from "@/components/motion/Motion";
-import { studies } from "@/lib/data/studies";
-import { Legend, TokensChart, OverheadSplit, StatRow, TaskTable } from "@/components/studies/StudyCharts";
+import { studies, hardStudy } from "@/lib/data/studies";
+import { Legend, TokensChart, OverheadSplit, StatRow, TaskTable, HeadToHeadChart, ArmsTable } from "@/components/studies/StudyCharts";
 
 export const metadata: Metadata = {
   title: "Studies — Lectern",
@@ -105,12 +105,61 @@ export default function StudiesPage() {
           );
         })}
 
+        <section id={hardStudy.slug} style={{ marginTop: 56 }}>
+          <Reveal amount={0.12}>
+            <div style={{ borderTop: "1px solid var(--bd2)", paddingTop: 30 }}>
+              <div style={{ display: "flex", flexWrap: "wrap", alignItems: "baseline", gap: 12 }}>
+                <h2 style={{ margin: 0, fontSize: 26, fontWeight: 800, letterSpacing: "-0.02em" }}>{hardStudy.title}</h2>
+                <span className="mono" style={{ fontSize: 12, color: "var(--fg-dim)" }}>{hardStudy.date}</span>
+              </div>
+              <p className="mono" style={{ margin: "8px 0 0", fontSize: 12, color: "var(--fg-dim)" }}>
+                6 harder tasks · 5 arms · subscription CLIs, no API keys · graders validated against reference solutions
+              </p>
+              <div style={{ marginTop: 16, display: "flex", flexDirection: "column", gap: 10, maxWidth: 720 }}>
+                {hardStudy.findings.map((f, i) => (
+                  <p key={i} style={{ margin: 0, fontSize: 15.5, lineHeight: 1.6, color: "var(--fg2)" }}>{f}</p>
+                ))}
+              </div>
+            </div>
+          </Reveal>
+
+          <Reveal amount={0.1}>
+            <div style={{ marginTop: 26, padding: "24px 22px", border: "1px solid var(--bd2)", borderRadius: "var(--radius-lg)", background: "var(--panel)" }}>
+              <h3 style={{ margin: "0 0 18px", fontSize: 15, fontWeight: 700 }}>Same model, with and without Lectern</h3>
+              <HeadToHeadChart study={hardStudy} />
+            </div>
+          </Reveal>
+
+          <Reveal amount={0.1}>
+            <div style={{ marginTop: 18 }}>
+              <ArmsTable study={hardStudy} />
+            </div>
+          </Reveal>
+
+          <Reveal amount={0.1}>
+            <div style={{ marginTop: 22, padding: "18px 20px", border: "1px solid var(--bd2)", borderRadius: "var(--radius)", background: "var(--elev)" }}>
+              <div className="kicker" style={{ marginBottom: 10 }}>Read before citing</div>
+              <ul style={{ margin: 0, paddingLeft: 18, display: "flex", flexDirection: "column", gap: 7 }}>
+                {hardStudy.caveats.map((c, i) => (
+                  <li key={i} style={{ fontSize: 13.5, lineHeight: 1.55, color: "var(--fg2)" }}>{c}</li>
+                ))}
+              </ul>
+              <p style={{ margin: "14px 0 0", fontSize: 13 }}>
+                <a href={hardStudy.links.results} target="_blank" rel="noreferrer" style={{ color: "var(--fg2)", borderBottom: "1px solid var(--bd)" }}>Full write-up</a>
+                <span style={{ color: "var(--fg-ghost)" }}> · </span>
+                <a href={hardStudy.links.traces} target="_blank" rel="noreferrer" style={{ color: "var(--fg2)", borderBottom: "1px solid var(--bd)" }}>Raw run traces</a>
+              </p>
+            </div>
+          </Reveal>
+        </section>
+
         <Reveal amount={0.1}>
           <div style={{ marginTop: 56, borderTop: "1px solid var(--bd2)", paddingTop: 26, textAlign: "center" }}>
             <p style={{ margin: 0, fontSize: 14, color: "var(--fg-dim)", maxWidth: 620, marginLeft: "auto", marginRight: "auto", lineHeight: 1.6 }}>
-              Next studies: harder multi-step tasks where a single call fails, and a
-              head-to-head against Claude Code and Antigravity as standalone agents.
-              New results land here and in the repo as they run.
+              Next: task classes where a single call genuinely fails — long-horizon,
+              large-repo, cross-session work — and cache-aware token accounting so
+              cross-backend costs compare fairly. New results land here and in the
+              repo as they run.
             </p>
           </div>
         </Reveal>
