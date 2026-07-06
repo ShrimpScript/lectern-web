@@ -47,7 +47,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: "Lectern — An engine for your AI",
     description:
-      "One engine under your coding agents. 're the V8. Multi-model orchestration and a persistent brain for the AI you already pay for — local-first, Linux-native.",
+      "One engine under your coding agents — multi-model orchestration and a persistent brain for the AI you already pay for. Local-first, open source.",
     type: "website",
   },
 };
