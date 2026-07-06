@@ -43,7 +43,7 @@ export const metadata: Metadata = {
   title: "Lectern — An engine for your AI",
   description:
     "One cockpit for Claude Code and Antigravity. Lectern plans each task, routes it to the model best at it, and backs every session with a persistent brain of your repo and machine. Local-first, Linux-native.",
-  metadataBase: new URL("https://lectern.ai"),
+  metadataBase: new URL("https://getlectern.vercel.app"),
   openGraph: {
     title: "Lectern — An engine for your AI",
     description:

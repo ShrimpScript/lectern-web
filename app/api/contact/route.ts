@@ -17,7 +17,7 @@ export async function POST(req: Request) {
   if (!v.ok) return v.res;
   const { name, email, message } = v.data;
   await sendEmail({
-    to: process.env.CONTACT_TO ?? "hello@lectern.ai",
+    to: process.env.CONTACT_TO ?? "shrimpyfry@gmail.com",
     subject: `Contact from ${name || email}`,
     html: `<p><b>${name || "(no name)"}</b> &lt;${email}&gt;</p><p>${message.replace(/</g, "&lt;")}</p>`,
     text: `${name} <${email}>\n\n${message}`,

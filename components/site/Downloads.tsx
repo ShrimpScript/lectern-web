@@ -39,7 +39,7 @@ const PACKAGES: {
   {
     fmt: "CLI only",
     distro: "servers / CI",
-    cmd: "curl -fsSL lectern.ai/install.sh | sh",
+    cmd: "curl -fsSL getlectern.vercel.app/install.sh | sh",
     art: null,
     note: "installer goes live at GA",
   },

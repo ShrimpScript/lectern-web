@@ -1,7 +1,7 @@
 import type { MetadataRoute } from "next";
 import { posts } from "@/lib/data/blog";
 
-const BASE = process.env.NEXT_PUBLIC_SITE_URL ?? "https://lectern.ai";
+const BASE = process.env.NEXT_PUBLIC_SITE_URL ?? "https://getlectern.vercel.app";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const routes = [

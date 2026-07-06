@@ -1,4 +1,4 @@
-# Lectern — Web (lectern.ai)
+# Lectern — Web (getlectern.vercel.app)
 
 Marketing site + **web dashboard** (the cloud control plane) for Lectern. Built
 from the Claude design and the architecture brain at `~/Documents/Lectern-Brain`.

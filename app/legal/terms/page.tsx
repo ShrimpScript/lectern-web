@@ -16,7 +16,7 @@ export default function TermsPage() {
         { h: "Your content", p: ["You retain all rights to your code and data. We claim no ownership and do not train on it."] },
         { h: "Warranty & liability", p: ["The service is provided \"as is.\" To the extent permitted by law, our liability is limited to the amount you paid in the prior 12 months."] },
         { h: "Changes", p: ["We may update these terms; material changes will be announced. Continued use constitutes acceptance."] },
-        { h: "Contact", p: ["legal@lectern.ai"] },
+        { h: "Contact", p: ["shrimpyfry@gmail.com"] },
       ]}
     />
   );

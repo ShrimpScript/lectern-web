@@ -1,7 +1,7 @@
 /* Static marketing/content data + dashboard seed data.
    Values mirror the Lectern design (changelog, pricing, dashboard numbers).
    Dashboard figures are seed/mock until wired to real usage rollups
-   (see ../../../Lectern-Brain/03-Architecture/Cloud Backend (lectern.ai).md). */
+   (see ../../../Lectern-Brain/03-Architecture/Cloud Backend (getlectern.vercel.app).md). */
 
 export type Plan = {
   id: "free" | "pro" | "team";

@@ -15,7 +15,7 @@ export default function CompanyPage() {
         <p><b style={{ color: "var(--fg)" }}>Linux-native.</b> We build for Linux first — proper packages, systemd, sandboxing — not a Mac port.</p>
         <p><b style={{ color: "var(--fg)" }}>Honest tooling.</b> Show the work — plan, diffs, commands — and never fake progress.</p>
         <H2>Careers</H2>
-        <p>We're a small team that ships. If Rust systems work, local-first product design, or developer-tools growth is your thing, write to <a href="/contact" style={{ color: "var(--fg2)" }}>careers@lectern.ai</a>.</p>
+        <p>We're a small team that ships. If Rust systems work, local-first product design, or developer-tools growth is your thing, write to <a href="/contact" style={{ color: "var(--fg2)" }}>careers@getlectern.vercel.app</a>.</p>
       </Prose>
     </MarketingPage>
   );

@@ -5,7 +5,7 @@ export function isEmailConfigured(): boolean {
   return Boolean(process.env.RESEND_API_KEY);
 }
 
-const FROM = process.env.EMAIL_FROM ?? "Lectern <noreply@lectern.ai>";
+const FROM = process.env.EMAIL_FROM ?? "Lectern <noreply@getlectern.vercel.app>";
 
 export async function sendEmail(opts: { to: string; subject: string; html: string; text?: string }): Promise<{ ok: boolean; skipped?: boolean }> {
   if (!isEmailConfigured()) {

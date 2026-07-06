@@ -14,7 +14,7 @@ export default function DpaPage() {
         { h: "Subprocessors", p: ["We use a limited set of subprocessors, listed at /legal/subprocessors. We provide notice of changes and impose equivalent data-protection obligations on each."] },
         { h: "Security", p: ["Encryption in transit and at rest; E2E encryption of sync blobs; least-privilege access; signed releases. See the Security page."] },
         { h: "Data subject requests & deletion", p: ["We assist controllers with access/erasure requests and delete or return personal data on termination, subject to legal retention requirements."] },
-        { h: "Contact", p: ["dpo@lectern.ai"] },
+        { h: "Contact", p: ["dpo@getlectern.vercel.app"] },
       ]}
     />
   );
