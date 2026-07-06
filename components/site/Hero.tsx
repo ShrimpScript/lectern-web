@@ -102,7 +102,7 @@ export function Hero() {
           className="kicker"
           style={{ letterSpacing: "0.24em", color: "var(--fg-dim)", marginBottom: 28 }}
         >
-          You bring the car · we&apos;re the V8
+          One engine under your coding agents
         </motion.div>
         <motion.h1
           variants={rise}
@@ -127,10 +127,10 @@ export function Hero() {
           variants={rise}
           style={{ margin: "28px 0 0", fontSize: 19, lineHeight: 1.55, color: "var(--fg-soft)", maxWidth: 600 }}
         >
-          One cockpit for Claude Code and Antigravity — on your desktop and in your terminal.
-          Lectern plans each task, routes it to the model that&apos;s best at it, and shares one
-          brain and one session history across every surface. Local-first, Linux-first,
-          free &amp; open source.
+          Lectern wraps Claude Code, Antigravity, and OpenCode — on your desktop and in
+          your terminal. It plans each task, routes it to the model that&apos;s best at it, and
+          shares one brain and one session history across every surface. Local-first,
+          Linux-first, free &amp; open source.
         </motion.p>
         <motion.div
           variants={rise}
@@ -143,7 +143,7 @@ export function Hero() {
           variants={rise}
           style={{ marginTop: 22, fontSize: 13, fontWeight: 500, color: "var(--fg-faint)" }}
         >
-          .deb + AppImage · free to start
+          .deb + AppImage · free &amp; open source
         </motion.div>
       </motion.div>
 

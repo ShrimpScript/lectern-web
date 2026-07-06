@@ -44,7 +44,7 @@ const SURFACES: { icon: ReactNode; name: string; body: string; href: string; hin
   {
     icon: AppWindowIcon,
     name: "Desktop App",
-    body: "The cockpit. Chat, plans, diffs, terminal, and the brain graph — a native desktop window over the engine.",
+    body: "The cockpit. Chat, plans, diffs, terminal, the brain graph — plus a personal agent with schedules and a Telegram channel, so runs reach your phone.",
     href: "/#download",
     hint: "download ↧",
   },

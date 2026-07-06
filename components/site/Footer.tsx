@@ -65,7 +65,7 @@ export function Footer() {
       </div>
       <div className="container" style={{ padding: "0 28px 40px", display: "flex", justifyContent: "space-between", alignItems: "center", flexWrap: "wrap", gap: 12 }}>
         <div style={{ fontSize: 12.5, color: "var(--fg-ghost)" }}>© 2026 Lectern · open source under <a href="https://github.com/ShrimpScript/lectern/blob/main/LICENSE" style={{ color: "var(--fg-dim)" }}>Apache-2.0</a></div>
-        <div style={{ fontSize: 12.5, color: "var(--fg-ghost)" }}>You bring the car · we&apos;re the V8</div>
+        <div style={{ fontSize: 12.5, color: "var(--fg-ghost)" }}>One engine under your coding agents</div>
       </div>
     </div>
   );
