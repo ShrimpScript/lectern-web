@@ -37,11 +37,13 @@ const PACKAGES: {
     href: `${REL}/Lectern_0.1.0_amd64.deb`,
   },
   {
-    fmt: "CLI only",
-    distro: "servers / CI",
-    cmd: "curl -fsSL getlectern.vercel.app/install.sh | sh",
+    fmt: "CLI + TUI",
+    distro: "terminal · any distro",
+    cmd: "curl -fsSL https://github.com/ShrimpScript/lectern/releases/download/v0.5.0/lectern-cli-linux-x64.tar.gz | tar xz && sh install.sh",
     art: null,
-    note: "installer goes live at GA",
+    note: "download v0.5.0 ↧",
+    href: `${REL}/lectern-cli-linux-x64.tar.gz`,
+    steps: "Installs lectern, lecternd, and lectern-tui into ~/.local/bin. Start with lectern doctor.",
   },
   {
     fmt: ".exe (unsigned)",
