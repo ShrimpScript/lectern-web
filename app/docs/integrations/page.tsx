@@ -3,13 +3,13 @@ import { H2, NextPage, P, UL } from "@/components/docs/DocsBits";
 import { McpAddDemo } from "@/components/docs/demos/McpAddDemo";
 import { PhoneDemo } from "@/components/docs/demos/PhoneDemo";
 
-export const metadata: Metadata = { title: "MCP, channels & marketplace — Lectern docs", description: "Tools, remote access, and shareable skills." };
+export const metadata: Metadata = { title: "MCP, channels & the Hub — Lectern docs", description: "Tools, remote access, and shareable skills." };
 
 export default function IntegrationsDocs() {
   return (
     <article>
       <div className="kicker">Documentation</div>
-      <h1 style={{ margin: "14px 0 10px", fontSize: 40, fontWeight: 800, letterSpacing: "-0.03em" }}>MCP, channels &amp; marketplace</h1>
+      <h1 style={{ margin: "14px 0 10px", fontSize: 40, fontWeight: 800, letterSpacing: "-0.03em" }}>MCP, channels &amp; the Hub</h1>
 
       <H2 id="mcp">Tools (MCP)</H2>
       <P>
@@ -30,7 +30,7 @@ export default function IntegrationsDocs() {
       </P>
       <PhoneDemo />
 
-      <H2 id="marketplace">Marketplace & skills</H2>
+      <H2 id="hub">The Hub & skills</H2>
       <UL items={[
         <><strong>Record</strong> a GUI demonstration with <span className="mono">/record</span> — it becomes a replayable skill (deterministic replay, no re-reasoning).</>,
         <><strong>Write or import</strong> skills as portable JSON; they sync into Claude Code automatically.</>,

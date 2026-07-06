@@ -66,7 +66,7 @@ export default function DocsOverview() {
         <><strong>Terminal UI</strong> — the whole product in your terminal, one command registry.</>,
         <><strong>CLI &amp; daemon</strong> — scripting, scheduling, encrypted export.</>,
         <><strong>Engine &amp; brain</strong> — how routing, memory, and security actually work.</>,
-        <><strong>MCP, channels &amp; marketplace</strong> — tools, remote access, shareable skills.</>,
+        <><strong>MCP, channels &amp; the Hub</strong> — tools, remote access, shareable skills.</>,
       ]} />
       <NextPage href="/docs/desktop" label="Desktop app" />
     </article>

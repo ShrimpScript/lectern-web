@@ -11,7 +11,7 @@ const NAV = [
   { href: "/", label: "Product" },
   { href: "/#platform", label: "Platform" },
   { href: "/pricing", label: "Free & OSS" },
-  { href: "/marketplace", label: "Marketplace" },
+  { href: "/hub", label: "Hub" },
   { href: "/docs", label: "Docs" },
   { href: "/changelog", label: "Changelog" },
 ];

@@ -1,6 +1,6 @@
 "use client";
 /* The platform strip — the real Lectern family, no vaporware:
-   desktop app, CLI + daemon, marketplace, optional encrypted cloud. */
+   desktop app, CLI + daemon, the Hub, optional encrypted cloud. */
 import type { ReactNode } from "react";
 import { Item, LiftCard, Reveal, Stagger } from "@/components/motion/Motion";
 
@@ -57,9 +57,9 @@ const SURFACES: { icon: ReactNode; name: string; body: string; href: string; hin
   },
   {
     icon: PackagesIcon,
-    name: "Marketplace",
-    body: "Community skills. Browse, install, publish — behaviours your agents learn once and keep for good.",
-    href: "/marketplace",
+    name: "Lectern Hub",
+    body: "The Lectern Hub. Search, install, publish — skills your agents learn once and keep for good, including official collections from Anthropic and Vercel.",
+    href: "/hub",
     hint: "browse skills →",
   },
   {

@@ -8,7 +8,7 @@ const SECTIONS = [
   { href: "/docs/tui", label: "Terminal UI" },
   { href: "/docs/cli", label: "CLI & daemon" },
   { href: "/docs/engine", label: "Engine & brain" },
-  { href: "/docs/integrations", label: "MCP, channels & marketplace" },
+  { href: "/docs/integrations", label: "MCP, channels & the Hub" },
 ];
 
 export function DocsNav() {

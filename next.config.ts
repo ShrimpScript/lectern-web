@@ -27,6 +27,9 @@ const securityHeaders = [
 ];
 
 const nextConfig: NextConfig = {
+  async redirects() {
+    return [{ source: "/marketplace", destination: "/hub", permanent: true }];
+  },
   reactStrictMode: true,
   poweredByHeader: false,
   async headers() {

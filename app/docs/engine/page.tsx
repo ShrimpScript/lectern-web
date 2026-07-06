@@ -56,7 +56,7 @@ export default function EngineDocs() {
         <><strong>Channels</strong>: inbound senders must be allowlisted from the CLI on the machine — a chat message can never approve itself.</>,
         <><strong>Open source</strong>: Apache-2.0 — audit any of this instead of trusting the docs.</>,
       ]} />
-      <NextPage href="/docs/integrations" label="MCP, channels & marketplace" />
+      <NextPage href="/docs/integrations" label="MCP, channels & the Hub" />
     </article>
   );
 }

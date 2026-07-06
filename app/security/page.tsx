@@ -16,7 +16,7 @@ const PRACTICES = [
   "Encrypted in transit (TLS) and at rest.",
   "Signed releases + reproducible-build goal.",
   "Least-privilege: tools, secrets, and network access are scoped and user-approved.",
-  "Marketplace items are signed, scoped, and sandboxed; tool output is treated as data, not instructions.",
+  "Hub items are signed, scoped, and sandboxed; tool output is treated as data, not instructions.",
   "Data export and account deletion on request.",
 ];
 
