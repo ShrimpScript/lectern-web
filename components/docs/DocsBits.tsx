@@ -49,6 +49,16 @@ export function DemoSlot({ title, desc }: { title: string; desc: string }) {
     </div>
   );
 }
+/** A monospace command / code block. */
+export function Code({ children }: { children: React.ReactNode }) {
+  return (
+    <pre className="mono" style={{ margin: "0 0 16px", padding: "12px 14px", background: "var(--elev)", border: "1px solid var(--bd)", borderRadius: 10, overflowX: "auto", fontSize: 12.5, lineHeight: 1.7, color: "var(--fg)" }}>{children}</pre>
+  );
+}
+/** Inline monospace token. */
+export function C({ children }: { children: React.ReactNode }) {
+  return <span className="mono" style={{ fontSize: "0.92em" }}>{children}</span>;
+}
 export function NextPage({ href, label }: { href: string; label: string }) {
   return (
     <div style={{ marginTop: 44, paddingTop: 20, borderTop: "1px solid var(--bd2)" }}>

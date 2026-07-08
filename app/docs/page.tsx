@@ -61,14 +61,23 @@ export default function DocsOverview() {
       </P>
 
       <H2 id="map">Where to next</H2>
+      <P>By feature — what each part does and how it works:</P>
       <UL items={[
-        <><strong>Desktop app</strong> — every surface of the cockpit, from tiles to the preview rail.</>,
-        <><strong>Terminal UI</strong> — the whole product in your terminal, one command registry.</>,
-        <><strong>CLI &amp; daemon</strong> — scripting, scheduling, encrypted export.</>,
-        <><strong>Engine &amp; brain</strong> — how routing, memory, and security actually work.</>,
-        <><strong>MCP, channels &amp; the Hub</strong> — tools, remote access, shareable skills.</>,
+        <><a href="/docs/commands"><strong>Chat commands</strong></a> — every slash command, and how skill replay works.</>,
+        <><a href="/docs/conductor"><strong>Conductor &amp; routing</strong></a> — how Auto picks a model, and how <span className="mono">/conduct</span> plans, fans out, and cross-reviews.</>,
+        <><a href="/docs/brain"><strong>The brain</strong></a> — memory, recall without draining tokens, the code graph.</>,
+        <><a href="/docs/scheduling"><strong>Scheduling</strong></a> — queue a prompt; the daemon runs it when due.</>,
+        <><a href="/docs/hub"><strong>The Hub</strong></a> — create, import, and share skills.</>,
       ]} />
-      <NextPage href="/docs/desktop" label="Desktop app" />
+      <P>By surface:</P>
+      <UL items={[
+        <><a href="/docs/desktop"><strong>Desktop app</strong></a> — every surface of the cockpit, from tiles to the preview rail.</>,
+        <><a href="/docs/tui"><strong>Terminal UI</strong></a> — the whole product in your terminal.</>,
+        <><a href="/docs/cli"><strong>CLI &amp; daemon</strong></a> — scripting, scheduling, encrypted export.</>,
+        <><a href="/docs/engine"><strong>Engine internals</strong></a> — backends, the store, the security model.</>,
+        <><a href="/docs/integrations"><strong>MCP &amp; channels</strong></a> — tools and remote access.</>,
+      ]} />
+      <NextPage href="/docs/commands" label="Chat commands" />
     </article>
   );
 }

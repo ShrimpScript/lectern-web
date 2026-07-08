@@ -71,7 +71,7 @@ export default function DesktopDocs() {
 
       <H2 id="settings">Settings that matter</H2>
       <UL items={[
-        <><strong>Providers &amp; models</strong> — live status per provider and what each unlocks; pick a default or leave <em>Auto</em> routing.</>,
+        <><strong>Providers &amp; models</strong> — live status per provider and what each unlocks; pick a default or leave <em>Auto</em> routing. Not installed? Each row expands an OS-aware setup panel with the exact install command, a one-click install for the safe user-space installers (OpenCode, Ollama), and links to the full guide.</>,
         <><strong>Tools (MCP)</strong> — one-click catalog; adds register across Claude Code, OpenCode, and Antigravity with truthful per-agent chips.</>,
         <><strong>Remote access</strong> — channels (Telegram today): allowlisted senders can task your agent from a phone.</>,
         <><strong>Routing rules</strong> — the editable <span className="mono">routing.json</span> the Conductor and Auto mode follow, plus an optional classifier.</>,
