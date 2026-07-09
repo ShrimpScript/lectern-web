@@ -43,6 +43,20 @@ export default function DocsOverview() {
         No keys at all? OpenCode&apos;s built-in free models work with zero configuration, and the{" "}
         <span className="mono">mock</span> backend exercises every pipeline for nothing.
       </P>
+      <P>
+        <strong>Want zero cloud?</strong> Point Lectern at{" "}
+        <a href="https://ollama.com" target="_blank" rel="noreferrer" style={{ color: "var(--fg)", borderBottom: "1px solid var(--bd)" }}>Ollama</a>{" "}
+        and it runs <strong>entirely on your machine</strong> — no API keys, no per-token bill, and nothing leaves the
+        box. Install Ollama, pull a code-tuned model, and Lectern auto-detects it (the model picker flags the ones that
+        are strong for coding):
+      </P>
+      <CodeBlock cmd="curl -fsSL https://ollama.com/install.sh | sh && ollama pull qwen3-coder" />
+      <P>
+        Local quality scales with your hardware — a code model like <span className="mono">qwen3-coder</span> shines on a
+        24-32GB GPU or Mac, while a smaller one still handles everyday edits on a 16GB laptop. It&apos;s the most direct
+        answer to the two things developers most want from an agent: no surprise token bill, and code that never leaves
+        their machine.
+      </P>
 
       <H2 id="first-run">3 · First run</H2>
       <CodeBlock cmd={'cd ~/code/your-repo && lectern run "explain this repo"'} />
