@@ -1,6 +1,5 @@
 "use client";
-import Link from "next/link";
-import { releases, artifacts } from "@/lib/data/content";
+import { releases } from "@/lib/data/content";
 import { Item, LiftCard, Reveal, Stagger } from "@/components/motion/Motion";
 
 /* Linux-native download block — replaces the design's "Download for Mac".
@@ -8,65 +7,61 @@ import { Item, LiftCard, Reveal, Stagger } from "@/components/motion/Motion";
    hosted artifact URLs are null it shows an honest early-access state
    instead of dead buttons. See Lectern-Brain/04-Linux-Native/Packaging & Distribution.md */
 
-const REL = "https://github.com/ShrimpScript/lectern/releases/download/v0.5.0";
 const RELEASES = "https://github.com/ShrimpScript/lectern/releases/latest";
 
-const PACKAGES: {
-  fmt: string;
-  distro: string;
-  cmd: string;
-  art: keyof typeof artifacts | null;
-  note: string;
-  href?: string;   // external link (e.g. public CI artifacts)
-  steps?: string;  // honest unsigned-install line
-}[] = [
-  {
-    fmt: "AppImage",
-    distro: "any distro",
-    cmd: "chmod +x Lectern.AppImage && ./Lectern.AppImage",
-    art: null,
-    note: "download v0.5.0 ↧",
-    href: `${REL}/Lectern_0.1.0_amd64.AppImage`,
-  },
-  {
-    fmt: ".deb",
-    distro: "Debian / Ubuntu / Mint",
-    cmd: "sudo apt install ./lectern.deb",
-    art: null,
-    note: "download v0.5.0 ↧",
-    href: `${REL}/Lectern_0.1.0_amd64.deb`,
-  },
-  {
-    fmt: "CLI + TUI",
-    distro: "terminal · any distro",
-    cmd: "curl -fsSL https://github.com/ShrimpScript/lectern/releases/download/v0.5.0/lectern-cli-linux-x64.tar.gz | tar xz && sh install.sh",
-    art: null,
-    note: "download v0.5.0 ↧",
-    href: `${REL}/lectern-cli-linux-x64.tar.gz`,
-    steps: "Installs lectern, lecternd, and lectern-tui into ~/.local/bin. Start with lectern doctor.",
-  },
-  {
-    fmt: ".exe (unsigned)",
-    distro: "Windows 10/11",
-    cmd: "Lectern_0.1.0_x64-setup.exe",
-    art: null,
-    note: "download v0.5.0 ↧",
-    href: `${REL}/Lectern_0.1.0_x64-setup.exe`,
-    steps: "Unsigned: SmartScreen will warn — click “More info” → “Run anyway”. Built from this public repo by GitHub Actions.",
-  },
-  {
-    fmt: ".dmg (unsigned)",
-    distro: "macOS 13+ · Apple Silicon",
-    cmd: "xattr -d com.apple.quarantine Lectern_0.1.0_aarch64.dmg",
-    art: null,
-    note: "download v0.5.0 ↧",
-    href: `${REL}/Lectern_0.1.0_aarch64.dmg`,
-    steps: "Unsigned: right-click the app → Open (or run the xattr line above). Built from this public repo by GitHub Actions.",
-  },
-];
+// Download URLs derive from the latest release's version (releases[0]) so a new
+// release only needs its entry added to lib/data/content — the buttons follow.
+// Asset filenames carry the numeric version (Lectern_<x.y.z>_...), matching what
+// the release build produces.
+function packagesFor(ver: string) {
+  const n = ver.replace(/^v/, ""); // "v0.6.0" -> "0.6.0"
+  const REL = `https://github.com/ShrimpScript/lectern/releases/download/${ver}`;
+  const note = `download ${ver} ↧`;
+  return [
+    {
+      fmt: "AppImage",
+      distro: "any distro",
+      cmd: "chmod +x Lectern.AppImage && ./Lectern.AppImage",
+      note,
+      href: `${REL}/Lectern_${n}_amd64.AppImage`,
+    },
+    {
+      fmt: ".deb",
+      distro: "Debian / Ubuntu / Mint",
+      cmd: "sudo apt install ./lectern.deb",
+      note,
+      href: `${REL}/Lectern_${n}_amd64.deb`,
+    },
+    {
+      fmt: "CLI + daemon",
+      distro: "terminal · any distro",
+      cmd: `curl -fsSL ${REL}/lectern-cli-linux-x64.tar.gz | tar xz`,
+      note,
+      href: `${REL}/lectern-cli-linux-x64.tar.gz`,
+      steps: "Unpacks the lectern and lecternd binaries — move them onto your PATH (e.g. ~/.local/bin), then run lectern doctor.",
+    },
+    {
+      fmt: ".exe (unsigned)",
+      distro: "Windows 10/11",
+      cmd: `Lectern_${n}_x64-setup.exe`,
+      note,
+      href: `${REL}/Lectern_${n}_x64-setup.exe`,
+      steps: "Unsigned: SmartScreen will warn — click “More info” → “Run anyway”. Built from this public repo by GitHub Actions.",
+    },
+    {
+      fmt: ".dmg (unsigned)",
+      distro: "macOS 13+ · Apple Silicon",
+      cmd: `xattr -d com.apple.quarantine Lectern_${n}_aarch64.dmg`,
+      note,
+      href: `${REL}/Lectern_${n}_aarch64.dmg`,
+      steps: "Unsigned: right-click the app → Open (or run the xattr line above). Built from this public repo by GitHub Actions.",
+    },
+  ];
+}
 
 export function Downloads() {
   const latest = releases[0];
+  const PACKAGES = packagesFor(latest.version);
   return (
     <div id="download" className="container" style={{ padding: "88px 28px", borderBottom: "1px solid var(--bd2)" }}>
       <Reveal>
@@ -97,7 +92,7 @@ export function Downloads() {
             }}
           >
             <span style={{ width: 6, height: 6, borderRadius: "50%", background: "var(--fg2)" }} />
-            v0.5.0 · all releases on GitHub
+            {latest.version} · all releases on GitHub
           </a>
         </div>
       </Reveal>
@@ -112,7 +107,6 @@ export function Downloads() {
         }}
       >
         {PACKAGES.map((p) => {
-          const url = p.art ? artifacts[p.art] : null;
           return (
             <Item key={p.fmt}>
               <LiftCard style={{ borderRadius: 12, padding: 18, height: "100%" }}>
@@ -130,27 +124,16 @@ export function Downloads() {
                     border: "1px solid var(--bd2)",
                     borderRadius: 8,
                     padding: "9px 11px",
+                    overflowX: "auto",
                   }}
                 >
                   <span style={{ color: "var(--fg-dim)" }}>$ </span>
                   {p.cmd}
                 </div>
                 <div style={{ marginTop: 12, fontSize: 12 }}>
-                  {url ? (
-                    <a href={url} style={{ color: "var(--fg)", borderBottom: "1px solid var(--bd)" }}>
-                      download {latest.version} ↧
-                    </a>
-                  ) : p.href ? (
-                    <a href={p.href} target="_blank" rel="noreferrer" style={{ color: "var(--fg)", borderBottom: "1px solid var(--bd)" }}>
-                      {p.note}
-                    </a>
-                  ) : p.art ? (
-                    <Link href="/contact" style={{ color: "var(--fg-dim)" }}>
-                      {p.note}
-                    </Link>
-                  ) : (
-                    <span style={{ color: "var(--fg-ghost)" }}>{p.note}</span>
-                  )}
+                  <a href={p.href} target="_blank" rel="noreferrer" style={{ color: "var(--fg)", borderBottom: "1px solid var(--bd)" }}>
+                    {p.note}
+                  </a>
                 </div>
                 {p.steps && (
                   <div style={{ marginTop: 8, fontSize: 11, lineHeight: 1.5, color: "var(--fg-dim)" }}>{p.steps}</div>
@@ -162,7 +145,8 @@ export function Downloads() {
       </Stagger>
       <Reveal delay={0.1} y={12}>
         <div style={{ marginTop: 16, fontSize: 12.5, color: "var(--fg-dim)" }}>
-          macOS &amp; Windows — coming later (the engine is Tauri + Rust, so they&apos;re reachable).
+          Windows &amp; macOS builds are unsigned, straight from public CI — verify any download against{" "}
+          <a href="https://github.com/ShrimpScript/lectern/releases/latest/download/SHA256SUMS.txt" target="_blank" rel="noreferrer" style={{ color: "var(--fg2)", borderBottom: "1px solid var(--bd)" }}>SHA256SUMS.txt</a> on the release.
         </div>
       </Reveal>
     </div>

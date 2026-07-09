@@ -88,6 +88,16 @@ export type Release = {
    (repo log / merged PRs). Pre-1.0: honest early-access versioning. */
 export const releases: Release[] = [
   {
+    version: "v0.6.0",
+    date: "Jul 8, 2026",
+    changes: [
+      { tag: "IMPROVED", text: "Memory recall is token-smart — a relevance floor means small talk recalls nothing instead of surfacing unrelated files, and when file content is needed only the most relevant window enters context (roughly 9× smaller than whole files). The agent is handed paths, not payloads, so it reads only what it needs." },
+      { tag: "ADDED", text: "One-click provider setup — each provider in Settings expands an OS-aware panel with the exact install command, a one-click install for the vetted user-space installers (OpenCode, Ollama), and links to the full guide and the provider's own page." },
+      { tag: "ADDED", text: "Feature-level documentation — how chat commands and skill replay work, how the Conductor routes and cross-reviews, the brain and recall, scheduling, and creating/importing/sharing Hub skills." },
+      { tag: "FIXED", text: "`schedule cancel` accepts the short id that `schedule list` prints (and reports a real miss), and recall no longer indexes the code graph's own cache into results." },
+    ],
+  },
+  {
     version: "v0.5.0",
     date: "Jul 5, 2026",
     changes: [
