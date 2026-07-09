@@ -9,7 +9,7 @@ export default function ContactPage() {
     <MarketingPage kicker="Contact" title="Talk to us." lede="Sales, support, security, or just curious — drop a note.">
       <ContactForm />
       <p className="mono" style={{ marginTop: 24, fontSize: 12.5, color: "var(--fg-dim)" }}>
-        Or email: shrimpyfry@gmail.com · sales@getlectern.vercel.app · shrimpyfry@gmail.com
+        Or email: hello@getlectern.vercel.app · sales@getlectern.vercel.app
       </p>
     </MarketingPage>
   );

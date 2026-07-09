@@ -22,7 +22,7 @@ export function PhoneDemo() {
               <Typer text="fix the failing auth test" on={p === 1} done={p > 1} speed={34} />
             </div>
             <div style={{ alignSelf: "flex-start", maxWidth: "92%", border: "1px solid var(--bd)", borderRadius: "12px 12px 12px 3px", padding: "6px 9px", fontSize: 11, color: "var(--fg-soft)", opacity: p >= 2 ? 1 : 0, transition: "opacity .3s" }}>
-              On it — running on zeke-pc…
+              On it — running on your machine…
             </div>
             <div style={{ alignSelf: "flex-start", maxWidth: "92%", border: "1px solid var(--bd)", borderRadius: "12px 12px 12px 3px", padding: "6px 9px", fontSize: 11, color: "var(--fg-soft)", opacity: p >= 4 ? 1 : 0, transition: "opacity .3s" }}>
               ✅ Fixed — <span className="mono" style={{ fontSize: 10 }}>src/auth.ts +11 −3</span>, tests green.

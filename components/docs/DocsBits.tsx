@@ -3,7 +3,7 @@ import Link from "next/link";
 /* Shared building blocks for the docs (OSS docs expansion, 2026-07-05).
    DemoSlot = a placeholder that DESCRIBES a future animated preview (same
    JS-driven cursor-scene language as onboarding) without pretending one
-   exists yet — Zeke commissions the animations later. */
+   exists yet — the animations are commissioned separately. */
 
 export function H2({ id, children }: { id?: string; children: React.ReactNode }) {
   return <h2 id={id} style={{ margin: "38px 0 12px", fontSize: 22, fontWeight: 700, letterSpacing: "-0.02em", scrollMarginTop: 90 }}>{children}</h2>;

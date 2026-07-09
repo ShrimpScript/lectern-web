@@ -42,7 +42,7 @@ export default function SecurityPage() {
       </div>
 
       <p className="mono" style={{ marginTop: 26, fontSize: 12.5, color: "var(--fg-dim)" }}>
-        Report a vulnerability: shrimpyfry@gmail.com · SOC 2 in progress for enterprise. See our{" "}
+        Report a vulnerability: security@getlectern.vercel.app · SOC 2 in progress for enterprise. See our{" "}
         <a href="/legal/privacy" style={{ color: "var(--fg2)" }}>Privacy Policy</a>,{" "}
         <a href="/legal/dpa" style={{ color: "var(--fg2)" }}>DPA</a>, and{" "}
         <a href="/legal/subprocessors" style={{ color: "var(--fg2)" }}>Subprocessors</a>.
