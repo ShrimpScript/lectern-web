@@ -1,0 +1,20 @@
+# Lectern
+
+> Lectern is a local-first cockpit that orchestrates the coding agents you already use — Claude Code, Antigravity (Gemini), and OpenCode/Ollama — adding a persistent brain (memory, skills, a code graph, your machine's profile), a Conductor that routes each task to the best model and cross-reviews across providers, and one session history shared by the desktop app, terminal UI, and CLI. Apache-2.0, Linux-first.
+
+## Docs
+- [Overview & setup](https://getlectern.vercel.app/docs): Install Lectern, connect providers, first run, and the fully-local (Ollama) path.
+- [Chat commands](https://getlectern.vercel.app/docs/commands): Every slash command (/plan, /apply, /conduct, /one-shot, /skill, /brief) and how skill replay works.
+- [Conductor & routing](https://getlectern.vercel.app/docs/conductor): How Auto picks a model per task, and how /conduct plans, fans out in parallel worktrees, and cross-reviews across providers.
+- [The brain: memory](https://getlectern.vercel.app/docs/brain): How recall works without draining tokens (relevance floor, snippets, pointer-not-payload) plus the code graph.
+- [Scheduling](https://getlectern.vercel.app/docs/scheduling): Queue a prompt to run later; the daemon runs it when due.
+- [The Hub: skills](https://getlectern.vercel.app/docs/hub): Create, import (Lectern JSON or the SKILL.md open standard), and share skills.
+- [Trust & security](https://getlectern.vercel.app/docs/security): Local-first data, the apply gate, prompt-injection handling, and skill trust.
+- [Desktop app](https://getlectern.vercel.app/docs/desktop): The cockpit — chats, tiles, the preview rail, and settings.
+- [Terminal UI](https://getlectern.vercel.app/docs/tui): The whole product in your terminal.
+- [CLI & daemon](https://getlectern.vercel.app/docs/cli): Scripting, scheduling, and encrypted session export.
+- [Engine internals](https://getlectern.vercel.app/docs/engine): Backends, the shared store, and the security model.
+- [MCP & channels](https://getlectern.vercel.app/docs/integrations): Tools and remote access.
+
+## Source
+- [GitHub](https://github.com/ShrimpScript/lectern): The whole ecosystem — engine, desktop, TUI, CLI, and site — open source under Apache-2.0.
