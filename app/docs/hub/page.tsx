@@ -36,7 +36,10 @@ export default function HubDocs() {
       <H2 id="import">Import a skill</H2>
       <P>
         Have a skill file from someone else? Import it from disk and it joins your set immediately — same as installing
-        from the Hub, but from a local bundle. Skills are plain, inspectable files; read one before you run it.
+        from the Hub, but from a local file. Two formats work: Lectern&apos;s own <C>.json</C> bundle, and the{" "}
+        <strong>SKILL.md open standard</strong> (<C>.md</C> with frontmatter and a markdown body) that the wider
+        ecosystem publishes — so a skill written for any SKILL.md-compatible agent imports straight into Lectern.
+        Skills are plain, inspectable files; read one before you run it.
       </P>
 
       <H2 id="publish">Share your own</H2>

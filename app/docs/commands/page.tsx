@@ -20,6 +20,7 @@ export default function CommandsDocs() {
         [<C key="c">/conduct</C>, <>Toggle Conductor mode, or <C>/conduct &lt;task&gt;</C> for a single orchestrated run: the goal is planned, sub-tasks fan out to the model best at each, and the result is cross-reviewed. See <a href="/docs/conductor">the Conductor</a>.</>],
         [<C key="c">/one-shot</C>, <>Toggle autonomous build, or <C>/one-shot &lt;brief&gt;</C> for one run: from a short brief the agent plans the full scope and builds it end to end, auto-applying. Runs longer than a normal turn.</>],
         [<C key="c">/skill</C>, <>Attach a learned skill by name (<C>/skill</C> lists them). A recorded skill <strong>replays its steps</strong> on send; a procedural skill guides the next message.</>],
+        [<C key="c">/brief</C>, <>Scaffold a structured task brief — goal, acceptance criteria, constraints, test command — into the composer to fill in and send. A structured brief steers the agent far better than a one-line ask.</>],
         [<C key="c">/clear</C>, <>Clear the current conversation and start fresh in the same workspace.</>],
         [<C key="c">/help</C>, <>List the available commands inline.</>],
       ]} />
