@@ -1,4 +1,5 @@
 "use client";
+import Link from "next/link";
 import { Item, LiftCard, Reveal, Stagger } from "@/components/motion/Motion";
 
 const PILLARS = [
@@ -7,18 +8,21 @@ const PILLARS = [
     title: "Many models, one task",
     body:
       "The Conductor plans your task and hands each part to the model best at it — Opus for the hard reasoning, Gemini Flash for the fast work — running independent steps in parallel across git worktrees and cross-reviewing the code between providers.",
+    href: "/docs/conductor",
   },
   {
     n: "02 / Memory",
     title: "A persistent brain",
     body:
-      "Memory, a learned profile of your machine, your recorded skills, and a graph of your codebase — fed into every session, so agents start knowing your repo and conventions instead of re-exploring them each morning.",
+      "Memory, a learned machine profile, your recorded skills, and a graph of your codebase — fed into every session so agents start knowing your repo instead of re-exploring it. Recall stays lean: only the files that actually match, and only the relevant slice of each, so context never balloons your token bill.",
+    href: "/docs/brain",
   },
   {
     n: "03 / Local-first",
     title: "Runs on your machine",
     body:
       "Every session executes locally and your keys never leave — the cloud only ever sees counts and ciphertext. Linux-first down to real desktop control, with Windows and macOS builds rolling off public CI.",
+    href: "/docs/security",
   },
 ];
 
@@ -51,10 +55,13 @@ export function Pillars() {
       >
         {PILLARS.map((p) => (
           <Item key={p.n}>
-            <LiftCard style={{ padding: "26px 24px", height: "100%" }}>
+            <LiftCard style={{ padding: "26px 24px", height: "100%", display: "flex", flexDirection: "column" }}>
               <div className="mono" style={{ fontSize: 13, color: "var(--fg-dim)", marginBottom: 18 }}>{p.n}</div>
               <div style={{ fontSize: 22, fontWeight: 700, letterSpacing: "-0.02em" }}>{p.title}</div>
               <p style={{ margin: "12px 0 0", fontSize: 15, lineHeight: 1.55, color: "var(--fg2)" }}>{p.body}</p>
+              <Link href={p.href} style={{ marginTop: "auto", paddingTop: 16, fontSize: 13.5, fontWeight: 600, color: "var(--fg)", borderBottom: "1px solid var(--bd)", alignSelf: "flex-start" }}>
+                Learn more →
+              </Link>
             </LiftCard>
           </Item>
         ))}
