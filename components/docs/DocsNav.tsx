@@ -17,6 +17,7 @@ const GROUPS: { title: string; items: { href: string; label: string }[] }[] = [
       { href: "/docs/brain", label: "The brain: memory" },
       { href: "/docs/scheduling", label: "Scheduling" },
       { href: "/docs/hub", label: "The Hub: skills" },
+      { href: "/docs/security", label: "Trust & security" },
     ],
   },
   {
