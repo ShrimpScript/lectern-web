@@ -20,6 +20,12 @@ export default function EngineDocs() {
         and native features stay intact; Lectern compounds them. A <span className="mono">mock</span> backend exercises
         the full pipeline for zero tokens (it&apos;s how we test everything).
       </P>
+      <P>
+        Your repo&apos;s conventions travel across all of them. Claude Code reads a project&apos;s{" "}
+        <span className="mono">AGENTS.md</span> natively; for the backends that don&apos;t, Lectern reads that file
+        (falling back to <span className="mono">CLAUDE.md</span>) and folds it into the run, so the project&apos;s rules
+        apply whichever model runs.
+      </P>
 
       <H2 id="routing">The Conductor & routing</H2>
       <P>

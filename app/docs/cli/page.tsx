@@ -15,7 +15,7 @@ export default function CliDocs() {
       <H2 id="cli">The lectern CLI</H2>
       <Tbl head={["Command", "What"]} rows={[
         [<span className="mono" key="1">lectern open .</span>, "Index a repo as a workspace (the brain's first look)"],
-        [<span className="mono" key="2">lectern run \"task\" [--apply] [--backend X] [--model Y]</span>, "One routed session; edits stay behind the Apply gate unless --apply"],
+        [<span className="mono" key="2">lectern run \"task\" [--apply] [--backend X] [--model Y]</span>, "One routed session; edits stay behind the Apply gate unless --apply, and it prints a suggested Conventional Commit for the changes"],
         [<span className="mono" key="3">lectern conduct \"goal\" [--apply]</span>, "The Conductor: plan → per-model steps (parallel worktrees) → cross-review"],
         [<span className="mono" key="4">lectern sessions · lectern skills list</span>, "History and learned skills from the local store"],
         [<span className="mono" key="5">lectern export --session ID --out file.lec [--encrypt]</span>, "Portable session export — optionally sealed (scrypt + XChaCha20-Poly1305)"],
