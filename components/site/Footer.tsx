@@ -16,27 +16,17 @@ const COLS: { title: string; links: { label: string; href: string }[] }[] = [
     title: "Resources",
     links: [
       { label: "Docs", href: "/docs" },
-      { label: "GitHub", href: "https://github.com/ShrimpScript/lectern" },
-      { label: "Blog", href: "/blog" },
-      { label: "Security", href: "/security" },
+      { label: "Hub", href: "/hub" },
+      { label: "Studies", href: "/studies" },
       { label: "Changelog", href: "/changelog" },
     ],
   },
   {
-    title: "Company",
+    title: "Open source",
     links: [
-      { label: "About", href: "/company" },
-      { label: "Customers", href: "/customers" },
-      { label: "Contact", href: "/contact" },
-    ],
-  },
-  {
-    title: "Legal",
-    links: [
-      { label: "Privacy", href: "/legal/privacy" },
-      { label: "Terms", href: "/legal/terms" },
-      { label: "DPA", href: "/legal/dpa" },
-      { label: "Subprocessors", href: "/legal/subprocessors" },
+      { label: "GitHub", href: "https://github.com/ShrimpScript/lectern" },
+      { label: "License (Apache-2.0)", href: "https://github.com/ShrimpScript/lectern/blob/main/LICENSE" },
+      { label: "Security", href: "/docs/security" },
     ],
   },
 ];

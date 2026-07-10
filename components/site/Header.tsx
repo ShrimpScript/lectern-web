@@ -5,7 +5,6 @@ import { motion, useScroll, useSpring, useTransform } from "motion/react";
 import { LogoMark, Wordmark } from "@/components/ui/Logo";
 import { Button } from "@/components/ui/Button";
 import { ThemeToggle } from "@/components/ui/ThemeToggle";
-import { useAuth } from "@/components/auth/AuthProvider";
 
 const NAV = [
   { href: "/", label: "Product" },
@@ -19,7 +18,6 @@ const NAV = [
 
 export function Header() {
   const pathname = usePathname();
-  const user = useAuth();
 
   /* Springy header morph: past ~80px of scroll the bar compacts and the
      wordmark folds away, leaving the podium mark — the logo "changes". */
@@ -80,9 +78,6 @@ export function Header() {
             GitHub
           </a>
           <ThemeToggle />
-          <Link href={user ? "/dashboard" : "/login"} style={{ fontSize: 14, color: "var(--fg2)" }}>
-            {user ? "Dashboard" : "Sign in"}
-          </Link>
           <Button href="/#download" size="md">
             Download
           </Button>

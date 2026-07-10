@@ -66,7 +66,7 @@ const SURFACES: { icon: ReactNode; name: string; body: string; href: string; hin
     icon: CloudLockIcon,
     name: "Cloud Sync",
     body: "Optional by design. End-to-end encrypted sync and device pairing — free, and the cloud sees counts and ciphertext, never code.",
-    href: "/security",
+    href: "/docs/security",
     hint: "how it works →",
   },
 ];
