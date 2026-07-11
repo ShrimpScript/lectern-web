@@ -7,8 +7,10 @@ import { Backends } from "@/components/site/Backends";
 import { Downloads } from "@/components/site/Downloads";
 import { OpenSource } from "@/components/site/OpenSource";
 import { CTA } from "@/components/site/CTA";
+import { getLatestRelease } from "@/lib/release";
 
-export default function HomePage() {
+export default async function HomePage() {
+  const release = await getLatestRelease();
   return (
     <>
       <Header />
@@ -18,7 +20,7 @@ export default function HomePage() {
         <Platform />
         <Backends />
         <OpenSource />
-        <Downloads />
+        <Downloads version={release.version} date={release.date} />
         <CTA />
       </main>
       <Footer />
