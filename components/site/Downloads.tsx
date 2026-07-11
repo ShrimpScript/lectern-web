@@ -59,8 +59,10 @@ function packagesFor(ver: string) {
   ];
 }
 
-export function Downloads() {
-  const latest = releases[0];
+export function Downloads({ version, date }: { version?: string; date?: string } = {}) {
+  // Prefer the live latest release (passed from the server), falling back to the static
+  // entry so the block still renders if the release fetch was unavailable at build time.
+  const latest = { version: version ?? releases[0].version, date: date ?? releases[0].date };
   const PACKAGES = packagesFor(latest.version);
   return (
     <div id="download" className="container" style={{ padding: "88px 28px", borderBottom: "1px solid var(--bd2)" }}>
