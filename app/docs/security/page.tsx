@@ -22,7 +22,7 @@ export default function SecurityDocs() {
       <UL items={[
         <>The model can be <strong>cloud</strong> (Claude Code, Antigravity/Gemini) or <strong>fully local</strong> (Ollama, or OpenCode&apos;s free models) — your choice, per session.</>,
         <>Recall sends only the short list of relevant <em>paths</em> (and any snippet the agent chooses to read), never your whole codebase. Disable it entirely for a run with <C>LECTERN_NO_BRAIN=1</C>.</>,
-        <>The optional cloud link (<C>lectern login</C>) sees only counts and ciphertext — never your code or keys. Encrypted session bundles use scrypt + XChaCha20-Poly1305.</>,
+        <>Lectern is fully local — no accounts, no sign-in, nothing leaves your machine. Encrypted session bundles (for moving a session between your own machines) use scrypt + XChaCha20-Poly1305.</>,
       ]} />
 
       <H2 id="apply-gate">The apply gate</H2>

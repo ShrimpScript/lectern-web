@@ -19,7 +19,7 @@ export default function CliDocs() {
         [<span className="mono" key="3">lectern conduct \"goal\" [--apply]</span>, "The Conductor: plan → per-model steps (parallel worktrees) → cross-review"],
         [<span className="mono" key="4">lectern sessions · lectern skills list</span>, "History and learned skills from the local store"],
         [<span className="mono" key="5">lectern export --session ID --out file.lec [--encrypt]</span>, "Portable session export — optionally sealed (scrypt + XChaCha20-Poly1305)"],
-        [<span className="mono" key="6">lectern doctor · lectern login</span>, "Environment truth-check · optional E2EE cloud pairing"],
+        [<span className="mono" key="6">lectern doctor</span>, "Environment truth-check — engine + providers"],
         [<span className="mono" key="7">lectern tui</span>, "Launch the terminal UI"],
       ]} />
       <P><span className="mono">LECTERN_DEBUG=1</span> traces backend spawns and key engine events to stderr.</P>
