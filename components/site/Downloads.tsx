@@ -2,10 +2,8 @@
 import { releases } from "@/lib/data/content";
 import { Item, LiftCard, Reveal, Stagger } from "@/components/motion/Motion";
 
-/* Linux-native download block — replaces the design's "Download for Mac".
-   Wired to the same release data the /api/releases endpoint serves; while
-   hosted artifact URLs are null it shows an honest early-access state
-   instead of dead buttons. See Lectern-Brain/04-Linux-Native/Packaging & Distribution.md */
+/* Linux-native download block. URLs derive from the latest GitHub release
+   (passed in from the server), so the buttons follow every release. */
 
 const RELEASES = "https://github.com/ShrimpScript/lectern/releases/latest";
 

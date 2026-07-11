@@ -1,7 +1,4 @@
-/* Static marketing/content data + dashboard seed data.
-   Values mirror the Lectern design (changelog, pricing, dashboard numbers).
-   Dashboard figures are seed/mock until wired to real usage rollups
-   (see ../../../Lectern-Brain/03-Architecture/Cloud Backend (getlectern.vercel.app).md). */
+/* Static marketing/content data (pricing, FAQ, releases fallback, docs nav). */
 
 export type Plan = {
   id: "free" | "pro" | "team";
@@ -157,33 +154,6 @@ export const releases: Release[] = [
   },
 ];
 
-/* Hosted artifact URLs — single source of truth for the Downloads section and
-   /api/releases. Null until public hosting exists (early access). */
-export const artifacts: { appimage: string | null; deb: string | null } = {
-  appimage: null,
-  deb: null,
-};
-
-/* ---- Dashboard seed data (mock until real usage rollups land) ---- */
-export const dashboard = {
-  user: { name: "Alex Rivera", email: "alex@acme.com", plan: "Pro", renews: "Jul 12" },
-  stats: [
-    { label: "SESSIONS · JUN", value: "142", note: "+18% vs. May" },
-    { label: "TOKENS · JUN", value: "1.24M", note: "62% of Pro pool" },
-    { label: "COST · JUN", value: "$48.20", note: "est. $74 at month end" },
-  ],
-  usageSeries: [34, 52, 41, 66, 58, 78, 90, 71, 62, 84, 55, 72], // % heights
-  backends: [
-    { name: "Claude Code", sub: "local · ~/bin/claude", used: "used 2h ago" },
-    { name: "Antigravity", sub: "workspace token", used: "yesterday" },
-  ],
-  activity: [
-    { when: "2h ago", repo: "acme-web", text: "settings page shipped" },
-    { when: "1d ago", repo: "payments-api", text: "webhook fix merged" },
-    { when: "2d ago", repo: "marketing", text: "3 sessions" },
-    { when: "3d ago", repo: "acme-web", text: "auth refactor" },
-  ],
-};
 
 export const docsNav = [
   { group: "Getting started", items: ["Quickstart", "Install", "Connect a backend"] },
