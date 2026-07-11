@@ -33,13 +33,6 @@ const PackagesIcon = (
     <path d="M3.5 7.5 12 12l8.5-4.5M12 12v9" />
   </svg>
 );
-const CloudLockIcon = (
-  <svg {...ic} aria-hidden>
-    <path d="M17.5 18.5H7a4.5 4.5 0 0 1-.4-8.98 6 6 0 0 1 11.6 1.63 3.7 3.7 0 0 1-.7 7.35Z" />
-    <path d="M10.5 13.4v-1.2a1.5 1.5 0 0 1 3 0v1.2M9.8 13.4h4.4v3H9.8v-3Z" />
-  </svg>
-);
-
 const SURFACES: { icon: ReactNode; name: string; body: string; href: string; hint: string }[] = [
   {
     icon: AppWindowIcon,
@@ -61,13 +54,6 @@ const SURFACES: { icon: ReactNode; name: string; body: string; href: string; hin
     body: "The Lectern Hub. Search, install, publish — skills your agents learn once and keep for good, including official collections from Anthropic and Vercel.",
     href: "/hub",
     hint: "browse skills →",
-  },
-  {
-    icon: CloudLockIcon,
-    name: "Cloud Sync",
-    body: "Optional by design. End-to-end encrypted sync and device pairing — free, and the cloud sees counts and ciphertext, never code.",
-    href: "/docs/security",
-    hint: "how it works →",
   },
 ];
 

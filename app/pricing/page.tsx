@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 const ROWS = [
   { t: "The whole product", d: "Desktop cockpit, terminal UI, CLI, daemon, Conductor, brain, the Hub — all of it, no gates." },
   { t: "Your existing AI", d: "Lectern drives Claude Code, Antigravity, and OpenCode under your own logins. We never resell tokens or sit between you and your provider." },
-  { t: "Optional account, sync only", d: "A Lectern account adds end-to-end-encrypted sync and device pairing. The cloud sees counts and ciphertext — never code, never keys. Also free." },
+  { t: "Nothing leaves your machine", d: "No accounts, no sign-in, no cloud. Your code, keys, and history stay local — Lectern is a tool you run, not a service you log into." },
   { t: "Sustainably open", d: "Apache-2.0 on GitHub, built in public with free CI. If Lectern earns a paid layer someday it will be additive — the open core stays open." },
 ];
 

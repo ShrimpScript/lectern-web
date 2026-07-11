@@ -67,13 +67,6 @@ export default function DocsOverview() {
       </P>
       <ApplyGateDemo />
 
-      <H2 id="cloud">4 · Optional — pair the cloud</H2>
-      <P>
-        Pairing adds end-to-end-encrypted sync and your plan&apos;s entitlements: run{" "}
-        <span className="mono">lectern login</span> and approve the device code. The cloud only ever sees counts and
-        ciphertext — never code, never keys.
-      </P>
-
       <H2 id="map">Where to next</H2>
       <P>By feature — what each part does and how it works:</P>
       <UL items={[
