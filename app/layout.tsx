@@ -2,9 +2,7 @@ import type { Metadata } from "next";
 import { Archivo, Hanken_Grotesk, IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
 import "./globals.css";
 import { ToastProvider } from "@/components/toast/ToastProvider";
-import { AuthProvider } from "@/components/auth/AuthProvider";
 import { MotionProvider } from "@/components/motion/Motion";
-import { getSessionUser } from "@/lib/auth/session";
 
 /* UI/body face — a refined grotesk (the Anthropic-navbar feel), replacing
    Archivo in all chrome. Archivo survives ONLY as the display face for the
@@ -52,20 +50,17 @@ export const metadata: Metadata = {
   },
 };
 
-export default async function RootLayout({
+export default function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
-  const user = await getSessionUser();
   return (
     <html lang="en" data-theme="dark" className={`${hanken.variable} ${archivo.variable} ${plexMono.variable} ${plexSans.variable}`}>
       <body>
-        <AuthProvider user={user}>
-          <MotionProvider>
-            <ToastProvider>{children}</ToastProvider>
-          </MotionProvider>
-        </AuthProvider>
+        <MotionProvider>
+          <ToastProvider>{children}</ToastProvider>
+        </MotionProvider>
       </body>
     </html>
   );
