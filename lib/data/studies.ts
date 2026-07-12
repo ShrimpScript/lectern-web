@@ -300,3 +300,39 @@ export const hardStudy: HardStudy = {
     "traces": "https://github.com/ShrimpScript/lectern/tree/main/bench/studies/2026-07-06-hard-tasks"
   }
 };
+
+// Brain-isolation study: the headroom test where persistent memory is the only
+// variable. Every number traces to bench/studies/2026-07-12-brain-isolation.
+export type BrainArm = { id: string; label: string; note: string; passed: number; runs: number; highlight?: boolean };
+export type BrainStudy = {
+  slug: string; title: string; date: string; model: string; cost: string;
+  arms: BrainArm[]; finding: string; note: string; caveats: string[];
+  links: { results: string; traces: string; harness: string };
+};
+
+export const brainStudy: BrainStudy = {
+  slug: "brain-isolation",
+  title: "Does persistent memory change the outcome?",
+  date: "2026-07-12",
+  model: "claude / sonnet",
+  cost: "subscription",
+  arms: [
+    { id: "bare", label: "Bare agent", note: "raw Claude Code, no Lectern", passed: 0, runs: 4 },
+    { id: "brain-off", label: "Lectern, brain off", note: "LECTERN_NO_BRAIN", passed: 0, runs: 8 },
+    { id: "brain-on", label: "Lectern, brain on", note: "single + conductor", passed: 8, runs: 8, highlight: true },
+  ],
+  finding:
+    "On convention tasks whose correctness depends on a project rule held only in Lectern's memory, the same model passes 8/8 with the brain on and 0/8 with it off — and bare Claude Code fails 0/4. The memory is the only variable that changes the outcome.",
+  note:
+    "The grader requires arbitrary catalog codes that live only in a seeded skill — unguessable and absent from the workspace, so a capable model can't reach them without the brain. Building a valid brain-off control also surfaced and fixed a real bug: the no-brain switch had left skills materialized where Claude Code reads them, so “brain off” still leaked them; it now stops that too.",
+  caveats: [
+    "Narrow by design: 2 conventions × 2 arms × 2 reps on Claude/Sonnet. The effect is categorical (8 vs 0), but breadth — more conventions and domains, larger N — is the next step.",
+    "This measures persistent-memory value on convention-dependent work, a specific capability — not a general “smarter” claim. It sits beside the low-overhead studies, where the brain is correctly neutral.",
+    "Same fresh workspace and prompt across arms; the only variable is the brain. Deterministic grader, exit 0 = pass, run in the workspace after the agent.",
+  ],
+  links: {
+    results: "https://github.com/ShrimpScript/lectern/blob/main/bench/studies/2026-07-12-brain-isolation/RESULTS.md",
+    traces: "https://github.com/ShrimpScript/lectern/tree/main/bench/studies/2026-07-12-brain-isolation",
+    harness: "https://github.com/ShrimpScript/lectern/tree/main/bench",
+  },
+};

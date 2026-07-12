@@ -4,7 +4,7 @@
    thin bars with rounded data-ends, direct value labels in mono, hover tooltip
    per mark, and a full table view below for accessibility. */
 import { useState } from "react";
-import type { Study, StudyTask } from "@/lib/data/studies";
+import type { Study, StudyTask, BrainStudy } from "@/lib/data/studies";
 
 const INK = "var(--fg)";        // conductor — the arm under scrutiny
 const MID = "var(--fg-faint)";  // single — the baseline
@@ -269,6 +269,39 @@ export function ArmsTable({ study }: { study: HardStudy }) {
       <p className="mono" style={{ margin: 0, padding: "8px 12px", fontSize: 10.5, color: "var(--fg-ghost)", borderTop: "1px solid var(--bd2)" }}>
         † cache-accounting artifact — not comparable across backends; read cost from wall time.
       </p>
+    </div>
+  );
+}
+
+/* ── brain isolation: pass rate per arm (the headroom win) ─────────────── */
+export function BrainResult({ study }: { study: BrainStudy }) {
+  return (
+    <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
+      {study.arms.map((a) => {
+        const rate = a.runs ? a.passed / a.runs : 0;
+        return (
+          <div
+            key={a.id}
+            style={{ display: "grid", gridTemplateColumns: "minmax(0, 190px) 1fr auto", alignItems: "center", gap: 14 }}
+          >
+            <div>
+              <div style={{ fontSize: 14, fontWeight: a.highlight ? 700 : 600, color: a.highlight ? "var(--fg)" : "var(--fg2)" }}>
+                {a.label}
+              </div>
+              <div className="mono" style={{ fontSize: 11, color: "var(--fg-dim)" }}>{a.note}</div>
+            </div>
+            <div
+              aria-label={`${a.label}: ${a.passed} of ${a.runs} passed`}
+              style={{ height: 16, background: "var(--bd2)", borderRadius: 4, overflow: "hidden" }}
+            >
+              <div style={{ width: `${rate * 100}%`, height: "100%", background: a.highlight ? INK : MID, borderRadius: 4, transition: "width 500ms ease" }} />
+            </div>
+            <span className="mono" style={{ fontSize: 13, fontWeight: 700, color: a.highlight ? "var(--fg)" : "var(--fg-dim)", minWidth: 42, textAlign: "right" }}>
+              {a.passed}/{a.runs}
+            </span>
+          </div>
+        );
+      })}
     </div>
   );
 }

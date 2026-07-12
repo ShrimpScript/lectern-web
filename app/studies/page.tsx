@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { Header } from "@/components/site/Header";
 import { Footer } from "@/components/site/Footer";
 import { Reveal } from "@/components/motion/Motion";
-import { studies, hardStudy } from "@/lib/data/studies";
-import { Legend, TokensChart, OverheadSplit, StatRow, TaskTable, HeadToHeadChart, ArmsTable } from "@/components/studies/StudyCharts";
+import { studies, hardStudy, brainStudy } from "@/lib/data/studies";
+import { Legend, TokensChart, OverheadSplit, StatRow, TaskTable, HeadToHeadChart, ArmsTable, BrainResult } from "@/components/studies/StudyCharts";
 
 export const metadata: Metadata = {
   title: "Studies — Lectern",
@@ -38,6 +38,52 @@ export default function StudiesPage() {
             </p>
           </div>
         </Reveal>
+
+        <section id={brainStudy.slug} style={{ marginTop: 52 }}>
+          <Reveal amount={0.12}>
+            <div style={{ borderTop: "1px solid var(--bd2)", paddingTop: 30 }}>
+              <div style={{ display: "flex", flexWrap: "wrap", alignItems: "baseline", gap: 12 }}>
+                <h2 style={{ margin: 0, fontSize: 26, fontWeight: 800, letterSpacing: "-0.02em" }}>{brainStudy.title}</h2>
+                <span className="mono" style={{ fontSize: 12, color: "var(--fg-dim)" }}>{brainStudy.date}</span>
+              </div>
+              <p className="mono" style={{ margin: "8px 0 0", fontSize: 12, color: "var(--fg-dim)" }}>
+                model {brainStudy.model} · convention tasks · {brainStudy.cost}
+              </p>
+              <p style={{ margin: "16px 0 0", fontSize: 15.5, lineHeight: 1.6, color: "var(--fg2)", maxWidth: 720 }}>
+                {brainStudy.finding}
+              </p>
+            </div>
+          </Reveal>
+
+          <Reveal amount={0.1}>
+            <div style={{ marginTop: 26, padding: "24px 22px", border: "1px solid var(--bd2)", borderRadius: "var(--radius-lg)", background: "var(--panel)" }}>
+              <h3 style={{ margin: "0 0 20px", fontSize: 15, fontWeight: 700 }}>Pass rate — same model, only the brain differs</h3>
+              <BrainResult study={brainStudy} />
+            </div>
+          </Reveal>
+
+          <Reveal amount={0.1}>
+            <div style={{ marginTop: 18, padding: "18px 20px", border: "1px solid var(--bd2)", borderRadius: "var(--radius)", background: "var(--panel)" }}>
+              <p style={{ margin: 0, fontSize: 14, lineHeight: 1.6, color: "var(--fg2)" }}>{brainStudy.note}</p>
+            </div>
+          </Reveal>
+
+          <Reveal amount={0.1}>
+            <div style={{ marginTop: 18, padding: "18px 20px", border: "1px solid var(--bd2)", borderRadius: "var(--radius)", background: "var(--elev)" }}>
+              <div className="kicker" style={{ marginBottom: 10 }}>Read before citing</div>
+              <ul style={{ margin: 0, paddingLeft: 18, display: "flex", flexDirection: "column", gap: 7 }}>
+                {brainStudy.caveats.map((c, i) => (
+                  <li key={i} style={{ fontSize: 13.5, lineHeight: 1.55, color: "var(--fg2)" }}>{c}</li>
+                ))}
+              </ul>
+              <p style={{ margin: "14px 0 0", fontSize: 13 }}>
+                <a href={brainStudy.links.results} target="_blank" rel="noreferrer" style={{ color: "var(--fg2)", borderBottom: "1px solid var(--bd)" }}>Full write-up</a>
+                <span style={{ color: "var(--fg-ghost)" }}> · </span>
+                <a href={brainStudy.links.traces} target="_blank" rel="noreferrer" style={{ color: "var(--fg2)", borderBottom: "1px solid var(--bd)" }}>Raw run traces</a>
+              </p>
+            </div>
+          </Reveal>
+        </section>
 
         {studies.map((study) => {
           return (
